@@ -23,6 +23,7 @@ module.exports = app => {
              newNote.id = uniqueID;
             notes.push(newNote);
             updateDb();
+            res.json(newNote);
             return console.log("Added new note: "+newNote.title);
         });
 
@@ -36,6 +37,7 @@ module.exports = app => {
         app.delete("/api/notes/:id",(req, res)=> {
             notes.splice(req.params.id, 1);
             updateDb();
+            res.json({ok:true});
             console.log("Deleted note with id "+req.params.id);
         });
 
